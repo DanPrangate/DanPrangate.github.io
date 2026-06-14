@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dan Prangate | Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0f1a;
+      --surface: #111827;
+      --surface-2: #1a2236;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.16);
+      --accent: #4ade80;
+      --accent-dim: rgba(74,222,128,0.12);
+      --text-primary: #f0f0f0;
+      --text-secondary: #8a8a96;
+      --text-muted: #55555f;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius: 10px;
+      --radius-lg: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,15,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); text-decoration: none; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 860px; margin: 0 auto; }
+
+    /* HERO */
+    #hero {
+      padding-top: 7rem;
+      padding-bottom: 6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 .dim { color: var(--text-secondary); }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 0.18s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d0d0f;
+    }
+
+    .btn-primary:hover { opacity: 0.88; text-decoration: none; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border-color: var(--border-hover);
+    }
+
+    .btn-secondary:hover { background: var(--surface-2); text-decoration: none; }
+
+    /* SECTION HEADER */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* ABOUT */
+    #about { border-bottom: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 1rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .detail-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .detail-value {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* SKILLS */
+    #skills { border-bottom: 1px solid var(--border); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-2);
+    }
+
+    .skill-icon {
+      font-size: 22px;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .skill-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .skill-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .skill-badge.coming-soon {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+
+    /* PROJECTS */
+    #projects { border-bottom: 1px solid var(--border); }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.25rem;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: var(--border-hover); }
+
+    .project-card:last-child { margin-bottom: 0; }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 0.9rem;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-highlights {
+      list-style: none;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-highlights li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 4px 0 4px 1.2rem;
+      position: relative;
+    }
+
+    .project-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .project-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: opacity 0.2s;
+    }
+
+    .project-link:hover { opacity: 0.75; text-decoration: none; }
+
+    .wip-card {
+      background: transparent;
+      border: 1px dashed var(--border-hover);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .wip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* CONTACT */
+    #contact { padding-bottom: 5rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      background: var(--surface-2);
+      text-decoration: none;
+    }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-info small {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      section { padding: 3.5rem 1.25rem; }
+      #hero { padding-top: 4.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Dan<span>.</span></span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-eyebrow">Available for opportunities</div>
+    <h1>Data Analyst<br><span class="dim">turning raw data into<br>clear decisions.</span></h1>
+    <p class="hero-desc">
+      Computing BSc student at Arden University with a background in IT support, internal auditing, and purchasing analysis. Building a data-focused portfolio to break into analytics — with SQL, Excel, Power BI, and Tableau in the toolkit.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View projects</a>
+      <a href="#contact" class="btn btn-secondary">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Background</div>
+    <h2>About me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a Computing BSc student based in London, with hands-on experience in IT support, internal auditing, and purchasing analysis. That background gave me a sharp eye for data accuracy, process gaps, and business context — now I'm channelling it into data analytics.
+        </p>
+        <p>
+          I'm working through a structured analytics curriculum covering SQL, Python, Excel, and Power BI, building real projects at every stage. My goal is to land an entry-level data analyst role where I can grow fast and make a measurable impact.
+        </p>
+      </div>
+      <div class="about-details">
+        <div class="detail-item">
+          <span class="detail-label">Location</span>
+          <span class="detail-value">London, UK 🇬🇧</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Education</span>
+          <span class="detail-value">BSc Computing — Arden University</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Background</span>
+          <span class="detail-value">IT Support · Auditing · Purchasing Analysis</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Open to</span>
+          <span class="detail-value">Entry-level Data Analyst roles (UK / Remote)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Toolkit</div>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">SQL</div>
+        <div class="skill-desc">MySQL Workbench — JOINs, aggregates, subqueries, window functions</div>
+        <span class="skill-badge">Active</span>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Excel</div>
+        <div class="skill-desc">Data cleaning, pivot tables, formulas, and analytical modelling</div>
+        <span class="skill-badge">Active</span>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📈</div>
+        <div class="skill-name">Power BI</div>
+        <div class="skill-desc">Dashboards, DAX, data modelling, and visual reporting</div>
+        <span class="skill-badge">Active</span>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-desc">Pandas, data wrangling, and automation — in progress</div>
+        <span class="skill-badge coming-soon">Coming soon</span>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔧</div>
+        <div class="skill-name">IT & Auditing</div>
+        <div class="skill-desc">IT support, internal audit, purchasing data analysis</div>
+        <span class="skill-badge">Background</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">Work</div>
+    <h2>Projects</h2>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">FC26 Under-21 Player Scouting Analysis</div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">SQL</span>
+        <span class="tag">MySQL Workbench</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Football Analytics</span>
+      </div>
+      <p class="project-desc">
+        An end-to-end SQL analytics project analysing FC26 player data to identify the best under-21 prospects for scouting. Built a custom potential score formula and surfaced actionable insights across multiple budget tiers.
+      </p>
+      <ul class="project-highlights">
+        <li>Custom potential scoring formula weighting age, current ability, and growth ceiling</li>
+        <li>Four budget-tier Dream Team XIs — from free agents to elite prospects</li>
+        <li>Five-season development projections per shortlisted player</li>
+        <li>Position-by-position breakdowns using JOINs, GROUP BY, and window functions</li>
+      </ul>
+      <a href="#" class="project-link">View on GitHub ↗</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">FC26 Recruitment &amp; Squad Development Dashboard</div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">DAX</span>
+        <span class="tag">Data Visualisation</span>
+        <span class="tag">Football Analytics</span>
+      </div>
+      <p class="project-desc">
+        A two-page interactive Power BI dashboard built on top of the FC26 SQL dataset — taking the analysis from query to visual insight. Designed to simulate a real recruitment analyst workflow, from player discovery through to squad investment decisions.
+      </p>
+      <ul class="project-highlights">
+        <li>Page 1 — Recruitment Analysis: KPI cards, scatter plot (current rating vs potential), donut chart (U21 vs senior split), ranked potential score table, and market value bar chart across 4,743 U21 players</li>
+        <li>Page 2 — 5-Year Squad Development Simulator: four budget tiers compared side by side (No Limit / 100–150M / 50–100M / Moneyball 0–50M) with multi-season rating growth line charts and per-player growth breakdowns</li>
+        <li>Key insight surfaced: spending 6x more on transfers gains only 3.4 overall points — smart scouting beats financial power</li>
+        <li>Full squad table with position, age, overall rating, potential, market value, and squad tier filterable by budget</li>
+      </ul>
+      <a href="#" class="project-link">View on GitHub ↗</a>
+    </div>
+
+    <div class="wip-card">
+      <div class="wip-dot"></div>
+      <span>More projects in progress — Python analyses coming soon.</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Let's connect</div>
+    <h2>Get in touch</h2>
+    <div class="contact-grid">
+      <a href="mailto:danprg1994@yahoo.com" class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-info">
+          Email
+          <small>danprg1994@yahoo.com</small>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/dan-prangate-68522b302/" target="_blank" class="contact-card">
+        <div class="contact-icon">💼</div>
+        <div class="contact-info">
+          LinkedIn
+          <small>Dan Prangate</small>
+        </div>
+      </a>
+      <a href="https://github.com/DanPrangate" target="_blank" class="contact-card">
+        <div class="contact-icon">🐙</div>
+        <div class="contact-info">
+          GitHub
+          <small>github.com/DanPrangate</small>
+        </div>
+      </a>
+      <a href="#" class="contact-card">
+        <div class="contact-icon">📄</div>
+        <div class="contact-info">
+          CV / Résumé
+          <small>Download PDF</small>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Built with HTML & CSS · Hosted on GitHub Pages
+  </footer>
+
+</body>
+</html>
